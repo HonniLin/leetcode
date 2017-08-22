@@ -1,6 +1,6 @@
 //22. Generate Parentheses
 //2017.8.22
-//µİ¹éÊµÏÖ
+//é€’å½’å®ç°
 
 class Solution {
 public:
