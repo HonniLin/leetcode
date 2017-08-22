@@ -1,0 +1,25 @@
+//在二维坐标系中，(i, ai) 表示 从 (i, 0) 到 (i, ai) 的一条线段，任意两条这样的线段和 x 轴组成一个木桶，找出能够盛水最多的木桶，返回其容积。
+//用两个指针从两端往中间靠拢，左指针的高度小于右指针，则左指针往++；右指针的高度小于左指针，则右指针--。取最大的答案。
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int num = height.size();
+        int ans = -1, left = 0, right = num-1;
+        
+        while(left < right)
+        {
+            ans = max(ans, (min(height[left], height[right]) * (right - left)) );
+            
+            if(height[left] < height[right])
+            {
+                left++;
+            }
+            else
+            {
+                right--;
+            }
+        }
+        return ans;
+    }
+};
