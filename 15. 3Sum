@@ -1,0 +1,50 @@
+//15. 3Sum
+//2017.8.25
+//O(N^2)
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int sum = nums.size();
+        vector<int> vec;
+        vector<vector<int>> veczone;
+        if(sum < 3) return veczone;
+        
+        sort(nums.begin(), nums.end());
+
+
+        for(int i = 0; i < sum; ++i)
+        {
+            int num = nums[i];
+            if(num > 0) break;
+            int s = 0;
+            int lf = i+1, rg = sum-1;
+            if(i > 0 && nums[i] == nums[i-1]) continue;
+            while(lf < rg )
+            {
+                s = num + nums[lf] + nums[rg];
+                if(s == 0)
+                {
+                    vec.push_back(nums[i]);
+                    vec.push_back(nums[lf]);
+                    vec.push_back(nums[rg]);
+                    veczone.push_back(vec);
+                    vec.clear();
+                    lf++;
+                    rg--;
+                    while(lf < rg && nums[lf] == nums[lf-1]) lf++;  
+                    while(lf < rg && nums[rg] == nums[rg+1]) rg--; 
+                }
+                else if(s < 0)
+                {
+                    lf++;
+                }
+                else if(s > 0)
+                {
+                    rg--;
+                }
+            }
+        }
+        return veczone;
+    }
+};
