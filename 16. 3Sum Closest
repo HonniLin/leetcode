@@ -1,0 +1,57 @@
+//16. 3Sum Closest
+//2017.9.4
+//和第15题很像。将sum和target的差尽量往0靠，两个指针以此策略移动。
+
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        int len = nums.size();
+        
+        sort(nums.begin(), nums.end());
+        
+        int ans, cnt;
+        cnt = 0x3f3f3f;
+        int j, k;
+        
+        for(int i = 0; i < len; ++i)
+        {
+            int now = nums[i];
+           // if(now > 0) break;
+            
+            int sum = 0;
+            j = i+1, k = len-1;
+            while(j < k)
+            {
+                sum = nums[i] + nums[j] + nums[k];
+                if(sum - target < 0)
+                {
+                    if(abs(sum - target) < cnt)
+                    {
+                        ans = sum;
+                        cnt = abs(sum - target);
+                    }
+                    j++;
+                }
+                else if(sum - target > 0) 
+                {
+                    if(abs(sum - target) < cnt)
+                    {
+                        ans = sum;
+                        cnt = abs(sum - target);
+                    }
+                    k--;
+                }
+                else if(sum - target == 0)
+                {
+                    ans = sum;
+                    break;
+                }
+            }
+            if(sum == target)
+            {
+                break;
+            }
+        }
+        return ans;
+    }
+};
