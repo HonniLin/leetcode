@@ -1,0 +1,33 @@
+//17. Letter Combinations of a Phone Number
+//2017.9.5
+//方法1：循环
+//方法2：递归，当一个题目，存在各种满足条件的组合，并且需要把它们全部列出来时，就可以考虑递归（回溯）。
+
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+        vector<string> ans;
+        if(digits == "")
+        {
+            return ans;
+        }
+        ans.push_back("");
+        string mapdig[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        
+        int len = digits.size();
+        for(int i = 0; i < len; ++i)
+        {
+            vector<string> temp;
+            for(int j = 0; j < ans.size(); ++j)
+            {
+                for(int k = 0; k < mapdig[digits[i]-'0'].size(); ++k)
+                {
+                    temp.push_back(ans[j] + mapdig[digits[i]-'0'][k]);
+                }
+            }
+            ans = temp;
+        }
+        
+        return ans;
+    }
+};
