@@ -1,0 +1,54 @@
+//18. 4Sum
+//2017.9.6
+//O(N^3)
+
+class Solution {
+public: 
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        int len = nums.size();
+        vector<vector<int>> ans;
+        set<vector<int>> sett;
+        if(len < 4) return ans;
+        
+        sort(nums.begin(), nums.end());
+        int lf , rg;
+    
+        for(int i = 0; i < len - 3; ++i)
+        {
+            for(int j = i + 1; j < len - 2; ++j)
+            {
+                int cnt = nums[i] + nums[j];
+                lf = j + 1; rg = len - 1;
+                while(lf < rg)
+                {
+                    int sum = nums[lf] + nums[rg] + cnt;
+                    if(sum == target)
+                    {
+                        vector<int> vec;
+                        vec.push_back(nums[lf]);
+                        vec.push_back(nums[i]);
+                        vec.push_back(nums[j]);
+                        vec.push_back(nums[rg]);
+                        sett.insert(vec);                        
+                        lf++;
+                        rg--;
+                    }
+                    else if(sum < target)
+                    {
+                        lf++;
+                    }
+                    else if(sum > target)
+                    {
+                        rg--;
+                    }
+                }
+            }
+        }
+        set<vector<int>>::iterator it = sett.begin();
+        for(; it != sett.end(); ++it)
+        {
+            ans.push_back(*it);
+        }
+        return ans;
+    }
+};
