@@ -1,0 +1,50 @@
+/*利用栈，注意空格，和有多位数的整数*/
+
+class Solution {
+public:
+    int calculate(string s) {
+        stack<long long> st;
+        char sign = '+';
+        long long num = 0;
+        
+        for(int i = 0; i < s.size(); ++i)
+        {
+            if(s[i] >= '0' && s[i] <= '9')
+            {
+                num = num*10 + s[i] - '0';
+            }
+            if(s[i] == '+' || s[i] == '-' || s[i] == '/' || s[i] == '*' || i == s.size()-1)
+            {
+                switch(sign)
+                {
+                    case '+':
+                        break;
+                    case '-':
+                        num = -num;
+                        break;
+                    case '*':
+                        num = st.top() * num;
+                        st.pop();
+                        break;
+                    case '/':
+                        num = st.top() / num;
+                        st.pop();
+                        break;
+                    default:
+                        break;
+                }
+                st.push(num);
+                sign = s[i];
+                num = 0;
+            }
+        }
+        
+        while(!st.empty())
+        {
+            num += st.top();
+            st.pop();
+        }
+        
+        return (int)num;
+    }
+};
