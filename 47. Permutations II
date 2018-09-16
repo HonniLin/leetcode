@@ -1,0 +1,39 @@
+/*
+排序，让重复的元素相邻，在递归的时候，处理重复元素和前面元素的使用情况
+*/
+
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> ans;
+        if(nums.size() == 0) return ans;
+        
+        sort(nums.begin(), nums.end());
+        bool *visited = new bool[nums.size()];
+        memset(visited, 0, sizeof(visited));
+        vector<int> cur;
+        dfs(nums, visited, cur, ans);
+        return ans;
+    }
+    
+    void dfs(vector<int>& nums, bool* visited, vector<int>& cur, vector<vector<int>>& ans)
+    {
+        if(cur.size() == nums.size())
+        {
+            ans.push_back(cur);
+            return;
+        }
+        for(int i = 0; i < nums.size(); ++i)
+        {
+            if(i > 0 && !visited[i-1] && nums[i] == nums[i-1]) continue;
+            if(!visited[i])
+            {
+                visited[i] = true;
+                cur.push_back(nums[i]);
+                dfs(nums, visited, cur, ans);
+                cur.pop_back();
+                visited[i] = false;
+            }
+        }
+    }
+};
