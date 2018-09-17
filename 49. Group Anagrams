@@ -1,0 +1,41 @@
+/*
+将字符串排序
+*/
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        string t;
+        map<string, vector<string> > mapp;
+        for(int i = 0; i < strs.size(); ++i)
+        {
+            t = SortStr(strs[i]);
+            mapp[t].push_back(strs[i]);
+        }
+        
+        vector<vector<string>> ans;
+        for(auto it: mapp)
+        {
+            vector<string> ret(it.second.begin(), it.second.end());
+            ans.push_back(ret);
+        }
+        return ans;
+    }
+private:
+    string SortStr(string s)
+    {
+        int cnt[26] = {0}, n = s.length();
+        string t;
+        for(int i = 0; i < n; ++i)
+        {
+            cnt[s[i] -'a']++;
+        }
+        for(int i = 0; i < 26; ++i)
+        {
+            for(int j = 0; j < cnt[i]; ++j)
+            {
+                t += i;
+            }
+        }
+        return t;
+    }
+};
