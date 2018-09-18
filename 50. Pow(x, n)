@@ -1,0 +1,25 @@
+/*
+二分，注意幂的奇偶性
+*/
+class Solution {
+public:
+    double func(double x, int n)
+    {
+        if(n == 0)
+            return 1;
+        double res = func(x, n / 2);
+        if(n % 2) 
+            return res * res * x;
+        else
+            return res * res;
+    }
+    double myPow(double x, int n) {
+        if(x == 0) return x;
+        if(n == 0) return 1;
+        if(n < 1)
+        {
+            return 1.0/func(x, -n);
+        }
+        return func(x, n);
+    }
+};
