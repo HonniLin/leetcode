@@ -1,0 +1,42 @@
+/*
+合并区间
+*/
+
+class Solution {
+public:
+    static bool cmp(Interval a, Interval b)
+    {
+        return a.start < b.start;
+    }
+    vector<Interval> merge(vector<Interval>& intervals) {
+        int len = intervals.size();
+        if(len == 0 || len == 1) return intervals;
+        
+        sort(intervals.begin(), intervals.end(), cmp);
+        
+        int left = intervals[0].start, right = intervals[0].end;
+        vector<Interval> ans;
+        Interval tmp;
+        
+        for(int i = 1; i < len; ++i)
+        {
+            if(right < intervals[i].start)
+            {
+                tmp.start = left;
+                tmp.end = right;
+                ans.push_back(tmp);
+                left = intervals[i].start;
+                right = intervals[i].end;
+            }
+            else 
+            {
+                left = min(left, intervals[i].start);
+                right = max(right, intervals[i].end);
+            }
+        }
+        tmp.start = left;
+        tmp.end = right;
+        ans.push_back(tmp);
+        return ans;
+    }
+};
