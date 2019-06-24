@@ -1,0 +1,22 @@
+// 二分，比较难的是怎么找到应该插入的位置。以left位置为基准，要插到比它小的后面。
+
+class Solution(object):
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        left = 0
+        right = len(nums)-1
+        mid = 0
+        res = 0
+        while left <= right:
+            mid = (left + right) / 2
+            if nums[mid] == target:
+                return mid
+            if nums[mid] > target:
+                right = mid - 1
+            elif nums[mid] < target:
+                left = mid + 1
+        return left
