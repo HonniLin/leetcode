@@ -2,7 +2,7 @@
 @Description: 32. Longest Valid Parentheses
 @Author: linhong
 @Date: 2019-10-15 20:18:22
-@LastEditTime: 2019-10-15 22:12:53
+@LastEditTime: 2019-10-15 22:17:04
 @LastEditors: Please set LastEditors
 也有dp的做法：
 def longestValidParentheses(self, s):
