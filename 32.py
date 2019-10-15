@@ -2,9 +2,10 @@
 @Description: 32. Longest Valid Parentheses
 @Author: linhong
 @Date: 2019-10-15 20:18:22
-@LastEditTime: 2019-10-15 22:17:04
+@LastEditTime: 2019-10-15 22:18:31
 @LastEditors: Please set LastEditors
-也有dp的做法：
+1/栈记录字符串的下标，进行长度的计算。 list[-1]取栈顶
+2/也有dp的做法：
 def longestValidParentheses(self, s):
         dp, res = [0] * len(s), 0  # 初始化dp、定义最优结果变量
         for i in range(len(s)):
