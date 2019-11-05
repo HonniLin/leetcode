@@ -1,11 +1,11 @@
 '''
 @Author: your name
 @Date: 2019-11-05 22:14:00
-@LastEditTime: 2019-11-05 23:36:40
+@LastEditTime: 2019-11-05 23:37:40
 @LastEditors: Please set LastEditors
 @Description: In User Settings Edit
 @FilePath: /leetcode/51.py
-回溯
+回溯, check函数的判断
 '''
 class Solution(object):
     def solveNQueens(self, n):
