@@ -1,36 +1,51 @@
-'''
-@Author: your name
-@Date: 2019-12-24 21:28:38
-@LastEditTime: 2019-12-24 22:40:29
-@LastEditors: Please set LastEditors
-@Description: In User Settings Edit
-@FilePath: /leetcode/76.py
-dfs
-'''
-class Solution(object):
-    def combine(self, n, k):
+`class Solution(object):
+    def minWindow(self, s, t):
         """
-        :type n: int
-        :type k: int
-        :rtype: List[List[int]]
+        :type s: str
+        :type t: str
+        :rtype: str
         """
-
-        ans = []
-        self.count = 0
-
-        def dfs(start, valuelist):
-            if self.count == k:
-                ans.append(valuelist)
-                return
-            for i in range(start, n + 1):
-                self.count += 1
-                dfs(i + 1, valuelist + [i])
-                self.count -= 1
-
-        dfs(1, [])
-        return ans
+        if not t or not s:
+            return ""
         
+        lens = len(s)
+        lent = len(t)
+        dict_t = {}
+        for i in t:
+            if i not in dict_t:
+                dict_t[i] = 1
+            else:
+                dict_t[i] = dict_t[i] + 1
+        required = len(dict_t)
+        formed = 0
+        window_counts = {}
+        l, r = 0, 0
+        ans = float("inf"), None, None
+
+        while r < lens:
+            character = s[r]
+            window_counts[character] = window_counts.get(character, 0) + 1
+            if character in dict_t and window_counts[character] == dict_t[character]:
+                formed = formed + 1
+            while l <= r and formed == required:
+                character = s[l]
+                if r - l + 1 < ans[0]:
+                    ans = r - l + 1, l, r
+                window_counts[character] = window_counts[character] - 1
+                if character in dict_t and window_counts[character] < dict_t[character]:
+                    formed = formed - 1
+                
+                l = l + 1
+            r = r + 1
+        return "" if ans[0] == float("inf") else s[ans[1]:ans[2] + 1]
+
+        
+
+
 sol = Solution()
-n = 4
-k = 2
-print sol.combine(n, k)
+s = "ADOBECODBAC"
+t = "ABC"
+#s = "abaa"
+#t = "aba"
+
+print sol.minWindow(s, t)
