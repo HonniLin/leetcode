@@ -4,7 +4,8 @@
 @File    :   152.py
 @Time    :   2020/03/29 18:07:15
 @Author  :   linhong02
-@Desc    :   None
+@Desc    :   数组中的最大乘积
+为了处理负数和0，必须存储最小值和最大值
 """
 
 class Solution(object):
