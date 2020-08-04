@@ -51,5 +51,3 @@ class Solution(object):
             return res
         else:
             return []
-
-        

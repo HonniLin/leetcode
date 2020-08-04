@@ -12,11 +12,9 @@ class Solution(object):
         :type s: List[str]
         :rtype: None Do not return anything, modify s in-place instead.
         """
-        slist = list(s)
         length = len(s)
         for i, j in zip(range(length - 1, -1, -1), range(length//2)):
-            slist[i], slist[j] = slist[j], slist[i]
-        return ''.join(slist)
+            s[i], s[j] = s[j], s[i]
 
 sol = Solution()
 s = ["h","e","l","l","o"]

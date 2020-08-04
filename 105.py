@@ -27,8 +27,8 @@ class Solution(object):
         if not inorder:
             return None
         else:
-            index = inorder.index(preorder[0])
-            root = preorder[0]
-            root.left = buildTree(preorder, inorder[0:index])
-            root.right = buildTree(preorder, inorder[index+1:])
-        return root
+            index = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[index])
+            root.left = self.buildTree(preorder, inorder[0:index])
+            root.right = self.buildTree(preorder, inorder[index + 1:])
+            return root

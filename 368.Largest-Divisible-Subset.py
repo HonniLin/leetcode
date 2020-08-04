@@ -16,7 +16,13 @@ class Solution(object):
             给出一个由无重复的正整数组成的集合，找出其中最大的整除子集，子集中任意一对 (Si，Sj) 都要满足：Si % Sj = 0 或 Sj % Si = 0。
             如果有多个目标子集，返回其中任何一个均可
         :way
-
+对于已经排序后的nums
+设定状态: dp[i]: 以nums[i]结尾的序列最大长度
+last[i]: 在最大序列中 nums[i]的上一个元素在nums出现的下标
+状态转移方程：
+使用二重循环,对于每一个nums[i]，看他可以接在之前的哪个序列dp[j]上，使得dp[i]最长
+nums[i]%nums[j] == 0是可以接的条件，dp[i]<=dp[j]是使得dp[i]变长的条件
+初始状态：dp[i] = 1 (i:1 - n) 每一个只有自己的序列长度为1
         """
         dp = [1 for i in range(len(nums) + 1)]
         last =  [-1 for i in range(len(nums) + 1)]
@@ -37,6 +43,7 @@ class Solution(object):
             res.append(nums[idx])
             idx = last[idx]
         return res
+
 sol = Solution()
 nums = [1,2,4,8, 10]
 print sol.largestDivisibleSubset(nums)
