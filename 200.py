@@ -14,6 +14,7 @@ class Solution(object):
         """
         :type grid: List[List[str]]
         :rtype: int
+        :desc 岛屿数量
         """
         res = 0
         for i in range(len(grid)):

@@ -19,7 +19,7 @@ class Solution(object):
         for i in range(len(prices) - 1):
             if prices[i] < prices[i + 1]:
                 res = res + (prices[i + 1] - prices[i])
-        
+         
         return res
 
 sol = Solution()

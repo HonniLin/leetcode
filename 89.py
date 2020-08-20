@@ -5,7 +5,7 @@
 @LastEditors  : Please set LastEditors
 @Description: In User Settings Edit
 @FilePath: /leetcode/89.py
-格雷码，就公式，看不懂哎
+格雷码 https://zhuanlan.zhihu.com/p/29254973
 '''
 class Solution(object):
     def grayCode(self, n):
@@ -14,7 +14,7 @@ class Solution(object):
         :rtype: List[int]
         """
         res = list()
-        for i in range(0, 2**n):
+        for i in range(1<<n):
             num = (i >> 1) ^ i
             print i, i >> 1, num
             res.append(num)

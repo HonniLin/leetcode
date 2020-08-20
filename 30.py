@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File    :   30.py
+@Time    :   2020/05/17 14:18:10
+@Author  :   linhong02
+@Desc    :   None
+"""
+
 '''
 @Description: 30. Substring with Concatenation of All Words
                 给定一个长字符串，再给定几个长度相同的单词，找出串联给定所有单词的子串的起始位置。

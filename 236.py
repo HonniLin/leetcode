@@ -4,7 +4,7 @@
 @File    :   236.py
 @Time    :   2020/03/19 09:22:05
 @Author  :   linhong02
-@Desc    :   None
+@Desc    :   二叉树的最近公共祖先
 """
 
 # Definition for a binary tree node.

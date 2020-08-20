@@ -4,7 +4,7 @@
 @File    :   27.py
 @Time    :   2020/05/17 13:19:36
 @Author  :   linhong02
-@Desc    :   None
+@Desc    :   删除list中某个数
 """
 
 class Solution(object):

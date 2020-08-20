@@ -1,4 +1,7 @@
-`class Solution(object):
+# https://leetcode.com/problems/minimum-window-substring/solution/
+# 滑动窗口
+
+class Solution(object):
     def minWindow(self, s, t):
         """
         :type s: str

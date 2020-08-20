@@ -39,6 +39,5 @@ class Solution(object):
             cur = cur.next
         return nodeH.next
         
-
 sol = Solution()
 print sol.deleteDuplicates()

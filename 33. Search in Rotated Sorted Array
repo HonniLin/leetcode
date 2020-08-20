@@ -22,7 +22,7 @@ public:
             {
             	return mid;
             }
-
+			// mid 大于 左
             if(nums[mid] >= nums[lef])
             {
             	if(target >= nums[lef] && target < nums[mid])

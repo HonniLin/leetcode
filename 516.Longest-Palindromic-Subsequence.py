@@ -25,3 +25,17 @@ class Solution:
                 else:
                     dp[i][j] = max(dp[i+1][j],dp[i][j-1])
         return dp[0][n-1]
+
+        def longestPalindrome(self, s: str) -> str:
+            """
+            最长回问子串
+            """
+            n = len(s)
+            dp = [[0] * n for _ in range(n)]
+            res = ""
+            for i in range(n):
+                for j in range(i + 1):
+                    if s[i] == s[j] and (i - j + 1 <= 3 or dp[j+1][i-1]):
+                        dp[j][i] = 1
+                        res = max(res, s[j:i+1], key=len)   
+            return res

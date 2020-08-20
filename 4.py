@@ -35,7 +35,6 @@ class Solution(object):
                 # i 大了
                 imax = i - 1
             else:
-                
                 if i == 0: max_left = nums2[j - 1]
                 elif j == 0: max_left = nums1[i - 1]
                 else: max_left = max(nums1[i - 1], nums2[j - 1])

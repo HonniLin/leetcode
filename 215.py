@@ -17,32 +17,25 @@ class Solution(object):
         # way1: 堆
         # return heapq.nlargest(k, nums)[-1]
 
-        # way2: 快排
-        def select(nums, k):
-            if len(nums) == 1:
-                return nums[0]
-            x = nums[0]
-            i = 1
-            j = len(nums) - 1
-            while i < j:
-                while i < j and nums[i] >= x: i += 1
-                while i < j and nums[j] <= x: j -= 1
-                if i == j:
-                    break
+# way2: 分治
+class Solution:
+    def findKthLargest(self, nums, k):
+        pos = self.partition(nums)
+        if pos + 1 == k:
+            return nums[pos]
+        elif pos + 1 > k:
+            return self.findKthLargest(nums[:pos], k)
+        else:
+            return self.findKthLargest(nums[pos+1:], k - pos - 1)
+    
+    def partition(self, nums):
+        i = 0
+        for j in range(len(nums)):
+            if nums[j] > nums[-1]: #the larger elements are in left side
                 nums[i], nums[j] = nums[j], nums[i]
-            if nums[i] >= x:
-                nums[0], num[i] = nums[i], nums[0]
-            else:
-                nums[0], nums[i-1] = nums[i-1], nums[0]
-                i -= 1
-            if i == k - 1:
-                return nums[i]
-            elif k > i:
-                return select(nums[i+1:], k - i - 1)
-            else:
-                return select(nums[:i], k)
-
-        return select(nums, k)
+                i += 1
+        nums[i], nums[-1] = nums[-1], nums[i]
+        return i
 
 sol = Solution()
 nums = [3,2,1,5,6,4]

@@ -4,7 +4,7 @@
 @File    :   110.py
 @Time    :   2020/03/08 10:55:46
 @Author  :   linhong02
-@Desc    :   None
+@Desc    :   树 求左右子树的深度差是否 > 1，是则不是平衡二叉树
 """
 
 # Definition for a binary tree node.

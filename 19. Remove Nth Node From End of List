@@ -1,6 +1,6 @@
 //19. Remove Nth Node From End of List
 //2017.8.23
-//链表问题，删除一个指定位置的节点，两个指针。
+//链表问题，删除倒数第n个节点，两个指针。
 
 /**
  * Definition for singly-linked list.

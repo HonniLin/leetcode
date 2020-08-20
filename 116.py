@@ -23,7 +23,7 @@ class Solution(object):
             return
         if dep >= len(res):
             res.append([])
-        res.append[dep].append(root)
+        res[dep].append(root)
         self.level(root.left, dep+1, res)
         self.level(root.right, dep+1, res)
 

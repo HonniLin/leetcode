@@ -13,6 +13,8 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
+        if numRows == 0:
+            return []
         res = []
         tmp = [1]
         res.append(tmp)
