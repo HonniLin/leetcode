@@ -4,7 +4,9 @@
 @File    :   116.py
 @Time    :   2020/03/15 11:27:46
 @Author  :   linhong02
-@Desc    :   None
+@Desc    :   https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+Populate each next pointer to point to its next right node. If there is no next right node, 
+the next pointer should be set to NULL.
 """
 
 """
