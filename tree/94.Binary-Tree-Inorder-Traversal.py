@@ -12,11 +12,12 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    def inorderTraversal(self, root):
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
         """
-        :type root: TreeNode
-        :rtype: List[int]
         :desc 中序遍历 非递归 栈
+             Inorder Traversal 
+              Approach 1:Recursive Approach 递归方式,
+              Approach 2: Iterating method using Stack
         """
         if not root:
             return []
@@ -29,8 +30,18 @@ class Solution(object):
                 cur = cur.left
             top = stack.pop() #此时左子树遍历完成
             res.append(top.val) #此时左子树遍历完成
-            cur = cur.right #遍历右子树
+            cur = top.right #遍历右子树
         return res
                 
-            
+    # recursively
+    def inorderTraversal1(self, root):
+        res = []
+        self.helper(root, res)
+        return res
+    
+    def helper(self, root, res):
+        if root:
+            self.helper(root.left, res)
+            res.append(root.val)
+            self.helper(root.right, res)
         
