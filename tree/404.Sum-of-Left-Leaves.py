@@ -14,6 +14,11 @@
 #         self.right = right
 class Solution:
     def sumOfLeftLeaves(self, root: TreeNode) -> int:
+        """
+        Recursive method. For given node we check whether its left child is a leaf. 
+        If it is the case, we add its value to answer, otherwise recursively call method on left child. 
+        For right child we call method only if it has at least one nonnull child.
+        """
         self.res = 0
         def work(root, flag):
             if not root:
